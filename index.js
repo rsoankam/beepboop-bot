@@ -38,26 +38,29 @@ controller.on('bot_channel_join', function (bot, message) {
 })
 
 controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {	
-  var testRes;
-  client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", function (data, response) {
+  var serviceNowRes;
+  client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", args, function (data, response) {
 	// parsed response body as js object 
 	console.log("###############Inside rest call function########################");
 	console.log(data);		
 	
-	testRes = data;
+	serviceNowRes = data;
 	console.log("!!!!!!!!!!!!!!!!!!!!!");
 	// raw response 
 	console.log(response);
-  });
-  var args = {
-	  data: testRes,
-    	  headers: { "Content-Type": "application/json", "Accept": "application/json"}
-  };
-  client_slack_in_webhook.post("https://hooks.slack.com/services/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", args, function (data, response) {
-  // parsed response body as js object 
-  console.log(testRes);
-  // raw response 
-  console.log(response);
+	  
+	 // ---------Posting to slack-----------
+	  var args = {
+	  	data: serviceNowRes,
+    	  	headers: { "Content-Type": "application/json", "Accept": "application/json"}
+  	  };
+  	client_slack_in_webhook.post("https://hooks.slack.com/services/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", args, function (data, response) {
+  	// parsed response body as js object 
+	console.log("+++++++ slack post data  and reponse ++++++++")
+  	console.log(data);
+  	// raw response 
+  	console.log(response);
+  	});
   });
   bot.reply(message, "listed all the incidents");
 })
