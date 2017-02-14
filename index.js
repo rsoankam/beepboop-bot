@@ -59,5 +59,5 @@ controller.hears(['hi'], ['ambient', 'direct_message','direct_mention','mention'
 		// raw response 
 		console.log(response);
 	});	
-  bot.reply(message, "Hello Rakesh!!! How are you?");
+  bot.reply(message, testRes);
 })
