@@ -2,7 +2,7 @@ var Botkit = require('botkit')
 var Client = require('node-rest-client').Client;
 var client = new Client();
 var args = {
-    headers: { "Content-Type": "application/json", "Accept": "application/json", "auth": "admin:Automation@123"}
+    headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": "Basic YWRtaW46QXV0b21hdGlvbkAxMjM="}
 };
 
 var token = process.env.SLACK_TOKEN
