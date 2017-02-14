@@ -2,6 +2,7 @@ var Botkit = require('botkit')
 var Client = require('node-rest-client').Client;
 var options_auth = { user: "admin", password: "Automation@123" };
 var client = new Client(options_auth);
+var client_slack_in_webhook = new Client();
 var args = {
     headers: { "Content-Type": "application/json", "Accept": "application/json"}
 };
@@ -36,28 +37,29 @@ controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
 })
 
-controller.hears(['hi'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {
-  bot.api.reactions.add({
-		timestamp: message.ts,
-        	channel: message.channel,
-		name: 'robot_face',
-    	},function(err, res) {
-        if (err) {
-            bot.botkit.log('Failed to add emoji reaction :(',err);
-	}
-    });
-
+controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {	
+  var testRes;
+  client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", function (data, response) {
+	// parsed response body as js object 
+	console.log("###############Inside rest call function########################");
+	console.log(data);		
 	
-	var testRes;
-	client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", function (data, response) {
-		// parsed response body as js object 
-		console.log("###############Inside rest call function########################");
-		console.log(data);
-		testRes = JSON.stringify(data);
-		console.log("!!!!!!!!!!!!!!!!!!!!!");
-		console.log(testRes);    	
-		// raw response 
-		console.log(response);
-	});	
-  bot.reply(message, testRes);
+	testRes = data;
+	console.log("!!!!!!!!!!!!!!!!!!!!!");
+	console.log(JSON.stringify(data));
+
+	// raw response 
+	console.log(response);
+  });
+  var args = {
+	  data: testRes,
+    	  headers: { "Content-Type": "application/json", "Accept": "application/json"}
+  };
+  client_slack_in_webhook.post("https://hooks.slack.com/services/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", args, function (data, response) {
+  // parsed response body as js object 
+  console.log(testRes);
+  // raw response 
+  console.log(response);
+  });
+  bot.reply(message, "listed all the incidents");
 })
