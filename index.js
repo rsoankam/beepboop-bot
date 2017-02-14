@@ -49,18 +49,18 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	// raw response 
 	console.log(response);
 	  
-	 // ---------Posting to slack-----------
-	  var args = {
-	  	data: serviceNowRes,
-    	  	headers: { "Content-Type": "application/json", "Accept": "application/json"}
-  	  };
-  	client_slack_in_webhook.post("https://hooks.slack.com/services/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", args, function (data, response) {
-  	// parsed response body as js object 
-	console.log("+++++++ slack post data  and reponse ++++++++")
-  	console.log(data);
-  	// raw response 
-  	console.log(response);
-  	});
+// 	 // ---------Posting to slack-----------
+// 	  var args = {
+// 	  	data: serviceNowRes,
+//     	  	headers: { "Content-Type": "application/json", "Accept": "application/json"}
+//   	  };
+//   	client_slack_in_webhook.post("https://hooks.slack.com/services/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", args, function (data, response) {
+//   	// parsed response body as js object 
+// 	console.log("+++++++ slack post data  and reponse ++++++++")
+//   	console.log(data);
+//   	// raw response 
+//   	console.log(response);
+//   	});
   });
   bot.reply(message, "listed all the incidents");
 })
