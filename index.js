@@ -37,15 +37,27 @@ controller.on('bot_channel_join', function (bot, message) {
 })
 
 controller.hears(['hi'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {
+  bot.api.reactions.add({
+		timestamp: message.ts,
+        	channel: message.channel,
+		name: 'robot_face',
+    	},function(err, res) {
+        if (err) {
+            bot.botkit.log('Failed to add emoji reaction :(',err);
+	}
+    });
+
+	
 	var testRes;
 	client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", function (data, response) {
 		// parsed response body as js object 
 		console.log("###############Inside rest call function########################");
 		console.log(data);
 		testRes = JSON.stringify(data);
-		console.log("!!!!!!!!!!!!!!!!!!!!!" + testRes);    	
+		console.log("!!!!!!!!!!!!!!!!!!!!!");
+		console.log(testRes);    	
 		// raw response 
 		console.log(response);
 	});	
-  bot.reply(message, testRes);
+  bot.reply(message, "Hello Rakesh!!! How are you?");
 })
