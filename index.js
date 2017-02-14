@@ -46,8 +46,6 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	
 	testRes = data;
 	console.log("!!!!!!!!!!!!!!!!!!!!!");
-	console.log(JSON.stringify(data));
-
 	// raw response 
 	console.log(response);
   });
