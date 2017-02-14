@@ -63,7 +63,8 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 //   	console.log(response);
 //   	});
   });
-	String dt = serviceNowRes.result[0].sys_id;
+	var obj = JSON.parse(serviceNowRes);
+	var dt = obj.result[0].sys_id;
 	console.log(dt);
   bot.reply(message, dt);
 })
