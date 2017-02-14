@@ -1,4 +1,9 @@
 var Botkit = require('botkit')
+var Client = require('node-rest-client').Client;
+var client = new Client();
+var args = {
+    headers: { "Content-Type": "application/json", "Accept": "application/json", "auth": "admin:Automation@123"}
+};
 
 var token = process.env.SLACK_TOKEN
 
@@ -31,5 +36,12 @@ controller.on('bot_channel_join', function (bot, message) {
 })
 
 controller.hears(['hi'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {
-  bot.reply(message, 'Hello.')
+	client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", function (data, response) {
+		// parsed response body as js object 
+		console.log(data);
+    var testRes = data.toString();
+		// raw response 
+		console.log(response);
+	});	
+  bot.reply(message, testRes)
 })
