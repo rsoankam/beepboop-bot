@@ -1,8 +1,9 @@
 var Botkit = require('botkit')
 var Client = require('node-rest-client').Client;
-var client = new Client();
+var options_auth = { user: "admin", password: "Automation@123" };
+var client = new Client(options_auth);
 var args = {
-    headers: { "Content-Type": "application/json", "Accept": "application/json", "Authorization": "Basic YWRtaW46QXV0b21hdGlvbkAxMjM="}
+    headers: { "Content-Type": "application/json", "Accept": "application/json"}
 };
 
 var token = process.env.SLACK_TOKEN
@@ -39,7 +40,9 @@ controller.hears(['hi'], ['ambient', 'direct_message','direct_mention','mention'
 	var testRes;
 	client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", function (data, response) {
 		// parsed response body as js object 
+		console.log("###############Inside rest call function########################");
 		console.log(data);
+		console.log("!!!!!!!!!!!!!!!!!!!!!" + json.stringify(data));
     	testRes = data.toString();
 		// raw response 
 		console.log(response);
