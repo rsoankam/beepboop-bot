@@ -42,11 +42,10 @@ controller.hears(['hi'], ['ambient', 'direct_message','direct_mention','mention'
 		// parsed response body as js object 
 		console.log("###############Inside rest call function########################");
 		console.log(data);
-		console.log("!!!!!!!!!!!!!!!!!!!!!" + json.stringify(data));
-    	testRes = data;
+		testRes = JSON.stringify(data);
+		console.log("!!!!!!!!!!!!!!!!!!!!!" + testRes);    	
 		// raw response 
 		console.log(response);
 	});	
-  bot.reply(message, 'Hello! Welcome to toy-slack-bot..');
   bot.reply(message, testRes);
 })
