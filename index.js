@@ -47,7 +47,7 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	serviceNowRes = data;
 	console.log("!!!!!!!!!!!!!!!!!!!!!");
 	// raw response 
-	console.log(response);
+	console.log(response + json.stringigy(data));
 	  
 // 	 // ---------Posting to slack-----------
 // 	  var args = {
