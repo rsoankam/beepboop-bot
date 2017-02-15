@@ -47,7 +47,7 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	serviceNowRes = data;
 	incident_len = data.result.length;
 	console.log(serviceNowRes);
-	 var i, text;
+	 var i, text = "";
 	for (i = 0; i < data.result.length; i++) { 
     		text += data.result[i].sys_id + "\n";
 	}
