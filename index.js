@@ -46,10 +46,11 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	serviceNowRes = data;
 	console.log(serviceNowRes);
 	  
-	console.log("#############!!!!!!!!!!!!");
+	
 	var obj = JSON.parse(serviceNowRes);
-	var dt = obj.result[0].sys_id;
-	console.log(dt);
+	var dt = obj.result[1].sys_id;
+	console.log("#############!!!!!!!!!!!!");
+	console.log(JSON.stringify(dt));
 	console.log("!!!!!!!!!!!!!!!!!!!!!" + error);
 	// raw response 
 	console.log(response);
