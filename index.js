@@ -56,7 +56,7 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 // 	console.log("Reading sys_id from JSON string done.");
 	  
 	console.log(text);
-	console.log("!!!!!!!!!!!!!!!!!!!!!" + error);
+	console.log("!!!!!!!!!!!!!!!!!!!!!");
 	// raw response 
 	console.log(response);
 	  
@@ -73,7 +73,7 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 //   	// raw response 
 //   	console.log(response);
 //   	});
-	  bot.reply(message, "testing servicenow rest calls");
+	  bot.reply(message, "Listing incidents \n" + text);
   });
   
 })
