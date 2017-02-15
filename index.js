@@ -37,12 +37,12 @@ controller.on('bot_channel_join', function (bot, message) {
 })
 
 controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {	
-//   var serviceNowRes;
+  var serviceNowRes;
   client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", args, function (data, response) {
 	// parsed response body as js object 
 	console.log("###############Inside rest call function########################");
 	console.log(data);		
-	console.log(response);
+	
 	serviceNowRes = data;
 	console.log("!!!!!!!!!!!!!!!!!!!!!");
 	// raw response 
