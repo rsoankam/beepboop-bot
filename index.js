@@ -63,5 +63,5 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
   });  
 })
 controller.hears(['create incident'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {
-	
+	console.log("Test msg");
 })
