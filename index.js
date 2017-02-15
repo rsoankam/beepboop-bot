@@ -43,9 +43,9 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	// parsed response body as js object 
 	console.log("###############Inside rest call function########################");
 	console.log(data);		
-	
+	console.log(response);
 	serviceNowRes = data;
-	console.log("!!!!!!!!!!!!!!!!!!!!!");
+	console.log("!!!!!!!!!!!!!!!!!!!!!" + test1);
 	// raw response 
 	console.log(response);
 	  
