@@ -62,9 +62,10 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 //   	// raw response 
 //   	console.log(response);
 //   	});
+	  bot.reply(message, "testing servicenow rest calls");
   });
 // 	var obj = JSON.parse(serviceNowRes);
 // 	var dt = obj.result[0].sys_id;
 // 	console.log(dt);
-  bot.reply(message, "testing servicenow rest calls");
+  
 })
