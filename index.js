@@ -48,9 +48,12 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	  
 	
 	var obj = JSON.parse(serviceNowRes);
-	var dt = obj.result[1].sys_id;
-	console.log("#############!!!!!!!!!!!!");
-	console.log(JSON.stringify(dt));
+	console.log("String to JSON object done..");
+	  
+	var dt = JSON.stringify(obj.result[1].sys_id);
+	console.log("Reading sys_id from JSON string done.");
+	  
+	console.log(dt);
 	console.log("!!!!!!!!!!!!!!!!!!!!!" + error);
 	// raw response 
 	console.log(response);
