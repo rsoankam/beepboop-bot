@@ -12,7 +12,7 @@ var token = process.env.SLACK_TOKEN
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
-  info: true
+  debug: false
 })
 
 // Assume single team mode if we have a SLACK_TOKEN
@@ -45,7 +45,7 @@ controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mentio
 	console.log(data);		
 	
 	serviceNowRes = data;
-	console.log("!!!!!!!!!!!!!!!!!!!!!");
+	console.log("!!!!!!!!!!!!!!!!!!!!!" + error);
 	// raw response 
 	console.log(response);
 	  
