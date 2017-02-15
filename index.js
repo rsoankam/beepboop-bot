@@ -39,21 +39,23 @@ controller.on('bot_channel_join', function (bot, message) {
 
 controller.hears(['list incidents'], ['ambient', 'direct_message','direct_mention','mention'], function (bot, message) {	
   var serviceNowRes;
+  var incident_len;
   client.get("https://dev20429.service-now.com/api/now/table/u_slack_incidents?sysparm_limit=10", args, function (data, response) {
 	// parsed response body as js object 
 	console.log("###############Inside rest call function########################");		
 	
 	serviceNowRes = data;
+	incident_len = data.result.length;
 	console.log(serviceNowRes);
+	 var i, text;
+	for (i = 0; i < data.result.length; i++) { 
+    		text += data.result[i].sys_id + "\n";
+	}
 	  
-	
-// 	var obj = JSON.parse(serviceNowRes);
-	console.log("String to JSON object done..");
+// 	var dt = JSON.stringify(serviceNowRes.result[1].sys_id);
+// 	console.log("Reading sys_id from JSON string done.");
 	  
-	var dt = JSON.stringify(serviceNowRes.result[1].sys_id);
-	console.log("Reading sys_id from JSON string done.");
-	  
-	console.log(dt);
+	console.log(text);
 	console.log("!!!!!!!!!!!!!!!!!!!!!" + error);
 	// raw response 
 	console.log(response);
